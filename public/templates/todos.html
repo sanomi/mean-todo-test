@@ -1,0 +1,37 @@
+<h1>Todos</h1>
+
+<div class="row">
+  <div class="col-xs-12">
+    <label for="dueDate"></label>
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" class="form-control" name="description" ng-model="newTodo.description" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <label for="dueDate">Due Date:</label>
+        <input type="date" id='dueDate' class="form-control" ng-model="newTodo.dueDate">
+        <button ng-click='add(newTodo)'>Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<div class="row">
+  <table class="table">
+    <tr>
+      <td>Is Done?</td>
+      <td>Description</td>
+      <td>Due Date</td>
+      <td>Delete</td>
+    </tr>
+    <tr ng-repeat='todo in todos track by $index'>
+      <td>
+        <input type="checkbox" ng-model="todo.isComplete" ng-change="toggleComplete(todo)">
+      </td>
+      <td> {{todo.description}} </td>
+      <td> {{todo.dueDate | date}} </td>
+      <td> <button class="btn btn-default btn-sm" ng-click='delete(todo)'>Delete</button> </td>
+    </tr>
+  </table>
+</div>
